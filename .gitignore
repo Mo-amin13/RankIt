@@ -1,0 +1,12 @@
+node_modules/
+.env
+.env.*
+!.env.example
+server/dist/
+dist/
+AGENTS.md
+CLAUDE.md
+
+# Generated documents and scratch files
+output/
+tmp/
