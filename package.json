@@ -2,7 +2,7 @@
   "name": "rankit",
   "version": "1.0.0",
   "description": "A website that assists people in ranking items",
-  "license": "ISC",
+  "license": "MIT",
   "type": "module",
   "main": "index.js",
   "engines": {
