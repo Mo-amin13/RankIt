@@ -31,7 +31,7 @@ export type AppOptions = {
   rateLimits?: RateLimitOptions
   // Mark the owner cookie Secure (HTTPS only). On in production.
   secureCookies?: boolean
-  // How many proxies sit in front of the app (Render: 1). With it, the
+  // How many proxies sit in front of the app (Render: 3). With it, the
   // rate limiter sees each visitor's real IP from X-Forwarded-For. Leave it
   // unset when there is no proxy, or anyone could fake their IP.
   trustProxy?: number

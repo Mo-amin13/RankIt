@@ -54,8 +54,10 @@ const { store, close } = createStore()
 const app = createApp(new RankingService(store), {
   // Browsers only send Secure cookies over HTTPS, so this stays off locally.
   secureCookies: production,
-  // Render puts exactly one proxy in front of the app.
-  trustProxy: production ? Number(process.env.TRUST_PROXY_HOPS ?? 1) : undefined,
+  // On Render a request passes Cloudflare, Render's edge and its load
+  // balancer: three proxies. Measured on the live site; adjust
+  // TRUST_PROXY_HOPS if the host changes.
+  trustProxy: production ? Number(process.env.TRUST_PROXY_HOPS ?? 3) : undefined,
   clientDir: findClientDir()
 })
 

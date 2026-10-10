@@ -2,6 +2,10 @@
 
 Rank anything by choosing between two items at a time.
 
+**[Try it online →](https://rankit-jeie.onrender.com)** No install needed. It
+runs on free hosting, so the first visit after a quiet spell can take about a
+minute to wake up.
+
 You enter a list (movies, albums, supercars, anything), then answer one simple
 question over and over: *which of these two do you prefer?* You can also call
 it equal. The full ranking stays hidden until the last choice, so early picks
@@ -37,6 +41,11 @@ cookie, and rankings are stored under a SHA-256 hash of that secret, never the
 secret itself. Your rankings are visible only in the browser that created
 them; anyone else gets a 404. Clearing cookies or switching devices means
 starting fresh.
+
+The hosted version saves only what you type into a ranking and that hashed
+browser ID. It has no accounts, analytics or ads, and never saves names,
+emails or IP addresses. The rate limiter holds IP addresses in memory for one
+minute, and the hosting providers keep their own request logs.
 
 ## Tech stack
 
@@ -119,7 +128,9 @@ shared/        Types used by both client and server
 
 In production (`NODE_ENV=production`) one Node server serves both the API and
 the built client. It reads `PORT` and `DATABASE_URL` from the environment,
-trusts one proxy hop for rate limiting, and marks the cookie `Secure`.
+trusts a fixed number of proxy hops (`TRUST_PROXY_HOPS`, default 3 for
+Render) so rate limits see each visitor's real IP, and marks the cookie
+`Secure`.
 
 On a host like Render:
 
