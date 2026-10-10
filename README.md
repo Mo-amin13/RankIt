@@ -74,7 +74,7 @@ project works), run the files in `server/db/migrations/` in order, then:
 cp .env.example .env
 ```
 
-and set `DATABASE_URL` in `.env`.
+then uncomment `DATABASE_URL` in `.env` and paste your connection string.
 
 ### Run it
 
